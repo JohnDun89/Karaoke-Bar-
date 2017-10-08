@@ -71,4 +71,16 @@ class TestRoom < MiniTest::Test
         assert_equal(result_2, 1)
   end
 
+   def test_charge_guest
+     result_one = @room.add_guest(@guest1)
+       assert_equal(result_one, [@guest1])          # asserting that the room has a guest
+
+     result_two = @guest1.add_money(15)
+       assert_equal(result_two, 15)                 # asserting that we have added money to him
+
+     result_three = @room.charge_guest(@guest1, 10)
+      expected = @guest1.show_balance               # asserting we have removed money from the selected guest
+       assert_equal(expected, result_three)
+   end
+
 end
