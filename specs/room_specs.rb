@@ -31,8 +31,8 @@ class TestRoom < MiniTest::Test
   end
 
   def test_add_song_to_playlist
-    result = @room.add_song(@song)
-    assert_equal([@song], result)
+    result = @room.add_song(@jailbreak)
+    assert_equal([@jailbreak], result)
   end
 
   def test_add_guest_to_room
@@ -81,6 +81,19 @@ class TestRoom < MiniTest::Test
      result_three = @room.charge_guest(@guest1, 10)
       expected = @guest1.show_balance               # asserting we have removed money from the selected guest
        assert_equal(expected, result_three)
+   end
+
+   def test_currently_playing
+     room_four = Room.new('Room Four')
+      room_four.add_song(@jailbreak)
+      room_four.add_song(@unity)
+      assert_equal([@jailbreak, @unity], room_four.playlist)     # two songs added to the playlist
+
+
+      result = room_four.currently_playing                        # this lets us know the first song [0] in the array of the playlist
+      assert_equal(result, @jailbreak)
+
+
    end
 
 end

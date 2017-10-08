@@ -1,3 +1,5 @@
+require_relative('room.rb')
+
 class Guest
 
   def initialize(name)
@@ -9,7 +11,7 @@ class Guest
   def name
     return @name
   end
-
+# ------------------------------------------ money methods ---------------------
   def show_balance
     return @money
   end
@@ -23,18 +25,20 @@ class Guest
     @money -= integer_amount
   end
 
+#------------------------------------------ music methods ----------------------
+
   def add_favourite_song(song)
     @favourite_song << song
     return @favourite_song
   end
 
   def hear_favourite_song(song_playing)
-    puts @favourite_song
-    puts song_playing
+
     if @favourite_song == song_playing
       return 'Woo Hoo Alright'
     else return 'No'
     end
+
   end
 
 
