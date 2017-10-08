@@ -1,3 +1,5 @@
+require_relative('guest')
+
 class Room
 
   def initialize(name)
@@ -33,6 +35,10 @@ class Room
 
   def remove_guest(guest)
     @guests.delete(guest)
+  end
+
+  def charge_guest(guest,money)
+    guest.pay_money(money)             # charging money to a selected guest via guest method to remove funds. 
   end
 
 

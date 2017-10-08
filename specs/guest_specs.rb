@@ -25,6 +25,17 @@ class TestGuest < MiniTest::Test
     result_one = @guest.add_money(10)
       assert_equal(10, result_one)
     result_two = @guest.pay_money(5)
-    assert_equal(15, result_two)
+    assert_equal(5, result_two)
+  end
+
+  def test_add_favourite_song
+    result = @guest.add_favourite_song(['Rick James','Unity'])
+    assert_equal(result, [['Rick James','Unity']])              # testing for two '[' as there is an array of potential fav songs.
+  end
+
+  def test_hear_favourite_song
+    @guest.add_favourite_song(['Rick James','Unity'])
+    result = @guest.hear_favourite_song([['Rick James','Unity']])
+    assert_equal('Woo Hoo Alright', result)
   end
 end
